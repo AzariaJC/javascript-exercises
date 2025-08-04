@@ -4,9 +4,10 @@ const palindromes = function (string) {
   //lets take out the spaces of the input string
   let stringWithNoSpaces = string.replaceAll(" ", "");
   //now, let's take out the punctuation (bc palindromes are irrespective of punctuation)
-  let stringWithNoSpacesOrPunctuation = stringWithNoSpaces.replaceAll(",", "");
+  let stringWithNoSpacesOrPunctuation = stringWithNoSpaces.replaceAll(/[.,!?]/g, "");
+  stringWithNoSpacesOrPunctuation = stringWithNoSpacesOrPunctuation.toLowerCase();
   //breaks string into an array with no spaces between characters
-  let consideredArray = string.split("");
+  let consideredArray = stringWithNoSpacesOrPunctuation.split("");
   //minus one bc index starts at 0, we wanna start from the end and add items to array that way
   for (let i = consideredArray.length - 1; i >= 0; i--) {
     arr.push(consideredArray[i]);
